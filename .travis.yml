@@ -1,0 +1,15 @@
+# configuring travis CI for the docker-react github repo
+# ! when we are using we root-access permissions
+language : generic
+sudo : required
+services:
+  - docker
+
+# * some series of commands that execute before running tests or deploying code 
+before-install:
+  - docker build -t jaladisishir/docker-react -f Dockerfile.dev .
+
+# * some series of commands that execute when tests need to be executed 
+# -e to return the result after running the test ,which is not the default behavior of npm test-providing an interface
+script:
+  - docker run -e CI=true jaladisishir/docker-react npm run test
