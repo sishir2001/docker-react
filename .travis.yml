@@ -13,3 +13,16 @@ before-install:
 # -e to return the result after running the test ,which is not the default behavior of npm test-providing an interface
 script:
   - docker run -e CI=true jaladisishir/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-355294214850"
+  bucket_path: "docker-react" 
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_key_id:
+    secret: "$AWS_SECRET_KEY"
