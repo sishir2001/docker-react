@@ -7,7 +7,7 @@ services:
 
 # * some series of commands that execute before running tests or deploying code 
 before-install:
-  - docker build -t jaladisishir/docker-react .
+  - docker build -t jaladisishir/docker-react -f Dockerfile.dev .
 
 # * some series of commands that execute when tests need to be executed 
 # -e to return the result after running the test ,which is not the default behavior of npm test-providing an interface
